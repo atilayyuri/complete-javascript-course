@@ -3,7 +3,7 @@ let js = 'amazing';
 console.log(40 + 8 + 23 - 10);
 
 
-// value is a piece of data, the most fundamental unit of information in programming. Value has a type not variable! Variable simply stores the value which has a type
+//! value is a piece of data, the most fundamental unit of information in programming. Value has a type not variable! Variable simply stores the value which has a type
 
 // variable = value
 
@@ -34,7 +34,7 @@ let age = 27;
 const description = "Does " + firstName + " who is " + age + " years old really likes JS? --> : " + javaBoolean
 console.log(description);
 
-// Or build a template literals
+//! Or build a template literals
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 
 const secondDescription = `Does ${firstName} who is ${age} years old really likes JS? --> : ${javaBoolean}`
@@ -87,7 +87,7 @@ console.log("I am "+ 28 +" years old");
 console.log("23" - "10" - 3);  // 10
 console.log("23" * "2");  // 26
 
-// 5 falsy values: 0, '', undefined, null, Nan
+//! 5 falsy values: 0, '', undefined, null, NaN
 // the rest would be converted to true
 
 console.log(Boolean(0)); // false
@@ -108,7 +108,11 @@ if (0) {
 
 const comparison = "18";
 if (comparison === 18) console.log(`Strict equality operator`);
+(comparison === 18) && console.log(`Strict equality operator`);
+
 if (comparison == 18) console.log(`Loose equality operator`);
+(comparison == 18) && console.log(`Loose equality operator`);
+
 
 // Use alert and prompt (output(), input())to interact with the client side
 
@@ -119,4 +123,18 @@ if (comparison == 18) console.log(`Loose equality operator`);
 console.log(true && false);
 console.log(true || false);
 console.log(true && !false);
+
+// Conditional operators are
+// if-else statements, switch, the conditional (ternary) operator
+
+//! Ternary operator syntax --> condition ? execution1 : execution2
+//! if condition is true --> execution 1, else execution 2
+age = 23
+(age >= 18 && age <=60) ? console.log(`I can drink wine`) : console.log(`I should drink water`);
+
+// Above is an expression that produces value, so this value can be assigned to a variable
+const drink = age >= 18 ? `wine` : `water`;
+console.log(drink); 
+// Or this value can directly be used
+console.log(`I like to drink ${age >= 18 ? `wine` : `water`}`);
 
