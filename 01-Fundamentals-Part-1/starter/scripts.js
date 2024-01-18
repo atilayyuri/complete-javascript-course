@@ -31,19 +31,17 @@ population--;
 
 let age = 27;
 
-const DESCRIPTION = "Does " + firstName + " who is " + age + " years old really likes JS? --> : " + javaBoolean
-console.log(DESCRIPTION);
+const description = "Does " + firstName + " who is " + age + " years old really likes JS? --> : " + javaBoolean
+console.log(description);
 
 // Or build a template literals
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 
-const SECOND_DESCRIPTION = `Does ${firstName} who is ${age} years old really likes JS? --> : ${javaBoolean}`
-console.log("Template string example:",SECOND_DESCRIPTION); 
+const secondDescription = `Does ${firstName} who is ${age} years old really likes JS? --> : ${javaBoolean}`
+console.log("Template string example:",secondDescription); 
 
 // If you need multiple line strings, template literals is easier
-console.log("Multiple \n\
-line \n\
-strings");
+console.log("Multiple \n\ line \n\ strings");
 
 console.log(`Multiple
 line
@@ -54,3 +52,38 @@ strings`);
 
 const now = 2024;
 console.log(now - 1991 > now - 2018);
+
+// Simple logic syntax for java
+// use the snippet ifelse + tab
+const ageOfSarah = 25
+let eligibility;
+if (ageOfSarah >= 18) {
+    eligibility = true;
+    console.log(`Sarah can start driving license`)
+    } else {
+        console.log(`Sarah is too young`);
+        eligibility = false;
+    }
+console.log(`Is Sarah eligible for a driving license: ${eligibility}`);
+
+// Type conversion and coercion
+
+// Coercion happens when JS needs to deal with different types
+// Conversions can only be to a number, to a string or to a boolean
+
+// Some conversions
+const inputYear = '1991'
+Number(inputYear) // this will not modify the original data
+console.log(typeof inputYear);
+
+console.log(Number(`Jonas`)); // trying to c
+
+console.log(String(23));
+
+// "+" operation does String(object)
+console.log("I am "+ 28 +" years old"); 
+
+// "-" "*" and "/" operator does Number(Object)
+console.log("23" - "10" - 3); 
+console.log("23" * "2"); 
+
