@@ -16,9 +16,25 @@ console.log(firstName);
 //constant variables should be all upper case
 const PI = 3.1415;
 
+// type of operator
 let javaBoolean = true;
 console.log(javaBoolean);
 console.log(typeof javaBoolean); // typeof method 
 
 // changing variable (without using let)
 javaBoolean = "YES!";
+
+// increasing/decreasing a variable by 1
+let population = 200;
+population++;
+population--;
+
+const DESCRIPTION = "Does " + firstName + " really likes JS? --> : " + javaBoolean
+
+console.log(DESCRIPTION);
+
+// MDN operator precedence (which operator is performed first)
+// (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
+
+const now = 2024;
+console.log(now - 1991 > now - 2018);
