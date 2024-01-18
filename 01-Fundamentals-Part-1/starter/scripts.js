@@ -84,6 +84,39 @@ console.log(String(23));
 console.log("I am "+ 28 +" years old"); 
 
 // "-" "*" and "/" operator does Number(Object)
-console.log("23" - "10" - 3); 
-console.log("23" * "2"); 
+console.log("23" - "10" - 3);  // 10
+console.log("23" * "2");  // 26
+
+// 5 falsy values: 0, '', undefined, null, Nan
+// the rest would be converted to true
+
+console.log(Boolean(0)); // false
+console.log(Boolean(undefined)); // false
+console.log(Boolean(`Jonas`)); // true
+console.log(Boolean({})); // true
+console.log(Boolean(``)); // falseconsole.log(object);
+
+if (0) {
+
+} else {
+    console.log("This will be executed");
+}
+
+// There are two equality operators "==" and "===". first one is the loose equality operator (18 == "18" --> true), however second one is the strict equality operator (18 == "18" --> false)
+
+// As a general rule use strict equality operator because loose equality operator may introduce bugs
+
+const comparison = "18";
+if (comparison === 18) console.log(`Strict equality operator`);
+if (comparison == 18) console.log(`Loose equality operator`);
+
+// Use alert and prompt (output(), input())to interact with the client side
+
+
+// Logical operators
+// and --> &&, or --> ||, not --> !
+
+console.log(true && false);
+console.log(true || false);
+console.log(true && !false);
 
