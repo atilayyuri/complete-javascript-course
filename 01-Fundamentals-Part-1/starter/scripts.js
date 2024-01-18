@@ -29,12 +29,28 @@ let population = 200;
 population++;
 population--;
 
-const DESCRIPTION = "Does " + firstName + " really likes JS? --> : " + javaBoolean
+let age = 27;
 
+const DESCRIPTION = "Does " + firstName + " who is " + age + " years old really likes JS? --> : " + javaBoolean
 console.log(DESCRIPTION);
 
+// Or build a template literals
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+
+const SECOND_DESCRIPTION = `Does ${firstName} who is ${age} years old really likes JS? --> : ${javaBoolean}`
+console.log("Template string example:",SECOND_DESCRIPTION); 
+
+// If you need multiple line strings, template literals is easier
+console.log("Multiple \n\
+line \n\
+strings");
+
+console.log(`Multiple
+line
+strings`);
+
 // MDN operator precedence (which operator is performed first)
-// (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
 
 const now = 2024;
 console.log(now - 1991 > now - 2018);
