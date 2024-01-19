@@ -70,8 +70,16 @@ const anotherPerson = {
     firstName: `Max`,
     lastName: `Mustermann`,
     age: 2024-1993,
+    birthYear: 1993,
     job: `teacher`,
-    friends: [`Michael`, `Peter`, `Steven`]
+    friends: [`Michael`, `Peter`, `Steven`],
+    hasDriversLicense: true,
+    calcAge: function (birthYear) {
+        return 2024 - birthYear;
+    },
+    calcAgeNew: function () {
+        return 2024 - this.birthYear;
+    }
 };
 
 console.log('anotherPerson :>> ', anotherPerson);
@@ -100,3 +108,6 @@ anotherPerson.location = `Portugal`;
 anotherPerson[`twitter`] = `@maxmustermann`;
 
 console.log(`${anotherPerson.firstName} has ${anotherPerson.friends.length} friends, and his best friend is called ${anotherPerson.friends[0]}`);
+
+console.log(anotherPerson.calcAge(1993));
+console.log(anotherPerson.calcAgeNew());
