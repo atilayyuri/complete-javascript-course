@@ -76,7 +76,7 @@ const anotherPerson = {
 
 console.log('anotherPerson :>> ', anotherPerson);
 
-//! Main difference between below executions are that you can use the dot notation only when you know the name of the property you want to access ahead of time. If you want to compute the property name, you have to use the bracket notation. 
+//! Main difference between below executions are that you can use the dot notation only when you know the name of the property you want to access ahead of time. If you want to compute the property name or if the propert name is a variable, you have to use the bracket notation. 
 console.log(anotherPerson.firstName);
 console.log(anotherPerson[`firstName`]);
 
@@ -84,3 +84,19 @@ console.log(anotherPerson[`firstName`]);
 const nameKey = `Name`;
 console.log(anotherPerson[`first` + nameKey]);
 console.log(anotherPerson[`last` + nameKey]);
+
+// Below means that the object keys have a type of string
+const interestedIn = prompt(`What do you want to know about anotherPerson? Choose between firstName, lastName, age, job and friends`);
+console.log(anotherPerson[interestedIn]);
+
+// If the key "interestedIn" does not exist in the object this will produce "undefined". Therefore anotherPerson[interestedIn] is a boolean false
+if (anotherPerson[interestedIn]) {
+    console.log(anotherPerson[interestedIn]);
+} else {
+    console.log(`Wrong request! Choose between firstName, lastName, age, job and friends`);
+}
+
+anotherPerson.location = `Portugal`;
+anotherPerson[`twitter`] = `@maxmustermann`;
+
+console.log(`${anotherPerson.firstName} has ${anotherPerson.friends.length} friends, and his best friend is called ${anotherPerson.friends[0]}`);
