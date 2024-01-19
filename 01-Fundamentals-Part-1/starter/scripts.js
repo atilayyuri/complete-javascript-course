@@ -47,7 +47,7 @@ console.log(`Multiple
 line
 strings`);
 
-// MDN operator precedence (which operator is performed first)
+//! MDN operator precedence (which operator is performed first)
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
 
 const now = 2024;
