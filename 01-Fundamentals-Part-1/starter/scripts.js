@@ -114,7 +114,7 @@ if (comparison == 18) console.log(`Loose equality operator`);
 (comparison == 18) && console.log(`Loose equality operator`);
 
 
-// Use alert and prompt (output(), input())to interact with the client side
+//! Use alert and prompt (output(), input())to interact with the client side
 
 
 // Logical operators

@@ -16,6 +16,7 @@ if (hasDriversLicense) {
 
 
 // Functions
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function  --> Function documentation
 function logger(params) {
     console.log(`I am logging ${params}`);
 }
@@ -39,7 +40,8 @@ console.log(anotherAge);
 
 
 // Arrays
-//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array   --> Array documentation
+
 const friends = [`Michael`, `Steven`, `Peter`];
 const years = new Array(1991, 1984, 2008, 2020);
 
@@ -60,3 +62,25 @@ friends.shift(); // remove element from the beginning of array
 
 friends.indexOf(`Steven`); // returns the index of the element in the array --> python "index"
 friends.includes(`Steven`); // returns true if the element is in the array, otherwise returns false --> python "in"
+
+//! Objects  --> python "dictionary"
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object  --> Object documentation
+
+const anotherPerson = {
+    firstName: `Max`,
+    lastName: `Mustermann`,
+    age: 2024-1993,
+    job: `teacher`,
+    friends: [`Michael`, `Peter`, `Steven`]
+};
+
+console.log('anotherPerson :>> ', anotherPerson);
+
+//! Main difference between below executions are that you can use the dot notation only when you know the name of the property you want to access ahead of time. If you want to compute the property name, you have to use the bracket notation. 
+console.log(anotherPerson.firstName);
+console.log(anotherPerson[`firstName`]);
+
+// Bracket notation also enables below functionality
+const nameKey = `Name`;
+console.log(anotherPerson[`first` + nameKey]);
+console.log(anotherPerson[`last` + nameKey]);
