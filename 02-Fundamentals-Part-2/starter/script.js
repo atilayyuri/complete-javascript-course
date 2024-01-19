@@ -77,9 +77,15 @@ const anotherPerson = {
     calcAge: function (birthYear) {
         return 2024 - birthYear;
     },
+    // Creating a new object attribute via an object method
+    // This enables you to calculate the age of the person only once and then store it in the object
     calcAgeNew: function () {
-        return 2024 - this.birthYear;
-    }
+        this.age = 2024 - this.birthYear;
+        return this.age;
+    },
+    getSummary: function () {
+        return `${this.firstName} is a ${this.calcAgeNew()} year old ${this.job}, and he has ${this.hasDriversLicense ? `a` : `no`} driver's license`
+    },
 };
 
 console.log('anotherPerson :>> ', anotherPerson);
@@ -111,3 +117,5 @@ console.log(`${anotherPerson.firstName} has ${anotherPerson.friends.length} frie
 
 console.log(anotherPerson.calcAge(1993));
 console.log(anotherPerson.calcAgeNew());
+
+console.log(anotherPerson.getSummary());
