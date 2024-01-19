@@ -130,7 +130,7 @@ console.log(true && !false);
 //! Ternary operator syntax --> condition ? execution1 : execution2
 //! if condition is true --> execution 1, else execution 2
 age = 23
-(age >= 18 && age <=60) ? console.log(`I can drink wine`) : console.log(`I should drink water`);
+age >= 18 && age <=60 ? console.log(`I can drink wine`) : console.log(`I should drink water`);
 
 // Above is an expression that produces value, so this value can be assigned to a variable
 const drink = age >= 18 ? `wine` : `water`;
@@ -138,3 +138,15 @@ console.log(drink);
 // Or this value can directly be used
 console.log(`I like to drink ${age >= 18 ? `wine` : `water`}`);
 
+// On top of normal way of using switch statement, you can use it also below way.
+
+// Log if you can satisfy the condition1 or condition2
+
+const key = "condition1"
+
+switch (key) {
+    case "condition1":
+    case "condition2":
+        console.log(`You can satisfy ${key}`);
+        break;
+}
