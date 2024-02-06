@@ -119,3 +119,34 @@ console.log(anotherPerson.calcAge(1993));
 console.log(anotherPerson.calcAgeNew());
 
 console.log(anotherPerson.getSummary());
+
+// Loops
+for (let index = 0; index < 10; index++) {
+    console.log(`Rep is ${index}`);    
+}
+
+const types = [];
+for (let i = 0; i < friends.length; i++) {
+    console.log(friends[i], typeof friends[i]);   
+    // constructing types array with types 
+    types.push(typeof friends[i]);
+}
+
+console.log(types);
+
+// continue and break
+console.log(` --- Only strings ---`);
+for (let i = 0; i < friends.length; i++) {
+    if (typeof friends[i] !== `string`) continue;
+    console.log(friends[i], typeof friends[i]);   
+}
+console.log(` --- Break statement ---`);
+for (let i = 0; i < friends.length; i++) {
+    if (typeof friends[i] === `number`) break;
+    console.log(friends[i], typeof friends[i]);   
+}
+
+// Running loops bachwards
+for (let i = friends.length - 1; i >= 0; i--) {
+    console.log(friends[i]);
+}
