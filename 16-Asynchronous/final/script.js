@@ -1,6 +1,8 @@
 'use strict';
 
 const btn = document.querySelector('.btn-country');
+const btnCoordinates = document.querySelector('.btn-country--coord');
+
 const countriesContainer = document.querySelector('.countries');
 
 const renderCountry = function (data, className = '') {
@@ -154,7 +156,12 @@ const getCountryData = function (country) {
   fetch(`https://restcountries.com/v3.1/name/${country}`)
     .then(response => {
       console.log(response);
+      
 
+      // This part is to handle the error in the promise chain
+      // i.e if the country string is adxaxsdase, then the response comes back with ok == false attribute.
+
+      // This new Error will be handled down in the .catch() method 
       if (!response.ok)
         throw new Error(`Country not found (${response.status})`);
 
@@ -183,6 +190,9 @@ const getCountryData = function (country) {
     .then(data => {
       console.log(data[0]);
       renderCountry(data[0], 'neighbour')})
+    
+    // .catch() is used to handle the error in the promise chain
+    // this will catch the both errors from the two fetch requests
     .catch(err => {
       console.error(`${err} 💥💥💥`);
       renderError(`Something went wrong 💥💥 ${err.message}. Try again!`);
@@ -191,9 +201,11 @@ const getCountryData = function (country) {
       countriesContainer.style.opacity = 1;
     });
 };
-getCountryData("portugal");
-/*
-const getCountryData = function (country) {
+
+
+// getCountryData("portugal");
+
+const getCountryData2 = function (country) {
   // Country 1
   getJSON(
     `https://restcountries.eu/rest/v2/name/${country}`,
@@ -212,7 +224,7 @@ const getCountryData = function (country) {
       );
     })
 
-    .then(data => renderCountry(data, 'neighbour'))
+    .then(data => renderCountry(data[0], 'neighbour'))
     .catch(err => {
       console.error(`${err} 💥💥💥`);
       renderError(`Something went wrong 💥💥 ${err.message}. Try again!`);
@@ -223,11 +235,11 @@ const getCountryData = function (country) {
 };
 
 btn.addEventListener('click', function () {
-  getCountryData('portugal');
+  getCountryData('turkey');
 });
 
 // getCountryData('australia');
-*/
+
 
 ///////////////////////////////////////
 // Coding Challenge #1
@@ -255,6 +267,43 @@ TEST COORDINATES 2: -33.933, 18.474
 
 GOOD LUCK 😀
 */
+
+const renderLatLng = function (data, className = '') {
+  //! Always check and test how the JSON is looking before using it
+  const html = `
+  <article class="country ${className}">
+    <div class="country__data">
+      <h3 class="country__name">${data["address"]["city"]}</h3>
+      <h4 class="country__region">${data["address"]["country"]}</h4>
+    </div>
+  </article>
+  `;
+  countriesContainer.insertAdjacentHTML('beforeend', html);
+  countriesContainer.style.opacity = 1;
+};
+
+
+
+const whereAmI = function (lat, lng, apiKey){
+
+  const options = {method: 'GET', headers: {accept: 'application/json'}};
+
+  fetch (`https://us1.locationiq.com/v1/reverse?key=${apiKey}&lat=${lat}&lon=${lng}&format=json&`, options).then(res => {
+  if (!res.ok) throw new Error(`Problem with geocoding ${res.status}`);
+  return res.json();
+  }).then(data => {
+    console.log(data["address"]);
+    console.log(`You are in ${data.address.city}, ${data.address.country}`);
+    renderLatLng(data);
+  }).catch(err => console.error(`${err.message} 💥`));
+
+}
+
+btnCoordinates.addEventListener('click', function () {
+  whereAmI(52.508, 13.381, apiKey);
+  whereAmI(52.508, 13.381, apiKey);
+})
+
 
 /*
 const whereAmI = function (lat, lng) {
