@@ -4,17 +4,18 @@ const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
 const renderCountry = function (data, className = '') {
+  //! Always check and test how the JSON is looking before using it
   const html = `
   <article class="country ${className}">
-    <img class="country__img" src="${data.flag}" />
+    <img class="country__img" src="${data["flags"]["png"]}" />
     <div class="country__data">
-      <h3 class="country__name">${data.name}</h3>
-      <h4 class="country__region">${data.region}</h4>
+      <h3 class="country__name">${data["name"]["common"]}</h3>
+      <h4 class="country__region">${data["region"]}</h4>
       <p class="country__row"><span>👫</span>${(
-        +data.population / 1000000
+        +data["population"] / 1000000
       ).toFixed(1)} people</p>
-      <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
-      <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
+      <p class="country__row"><span>🗣️</span>${Object.values(data["languages"])[0]}</p>
+      <p class="country__row"><span>💰</span>${Object.values(Object.values(data["currencies"])[0])[0]}</p>
     </div>
   </article>
   `;
@@ -142,44 +143,56 @@ setTimeout(() => {
 //       renderCountry(data[0]);
 //     });
 // };
+*/
+//! .then() method is applied to the promise. Avoid callback hell by making a callback chain using the promises in following way
+//! <promise>.then(return <promise>).then(return <promise>)...
 
-// const getCountryData = function (country) {
-//   // Country 1
-//   fetch(`https://restcountries.eu/rest/v2/name/${country}`)
-//     .then(response => {
-//       console.log(response);
+//! Not in the below way which results in nested callback hell
+//! <promise>.then(<promise>.then())
+const getCountryData = function (country) {
+  // Country 1
+  fetch(`https://restcountries.com/v3.1/name/${country}`)
+    .then(response => {
+      console.log(response);
 
-//       if (!response.ok)
-//         throw new Error(`Country not found (${response.status})`);
+      if (!response.ok)
+        throw new Error(`Country not found (${response.status})`);
 
-//       return response.json();
-//     })
-//     .then(data => {
-//       renderCountry(data[0]);
-//       // const neighbour = data[0].borders[0];
-//       const neighbour = 'dfsdfdef';
+      return response.json();
+    })
+    .then(data => {
+      // index 0 is the response body
+      console.log(data[0]);
+      renderCountry(data[0]);
 
-//       if (!neighbour) return;
+      const neighbour = data[0].borders[0];
+      // // const neighbour = 'dfsdfdef';
+      console.log("neighbour", neighbour);
+      if (!neighbour) return;
 
-//       // Country 2
-//       return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
-//     })
-//     .then(response => {
-//       if (!response.ok)
-//         throw new Error(`Country not found (${response.status})`);
+      // // Country 2
+      return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
 
-//       return response.json();
-//     })
-//     .then(data => renderCountry(data, 'neighbour'))
-//     .catch(err => {
-//       console.error(`${err} 💥💥💥`);
-//       renderError(`Something went wrong 💥💥 ${err.message}. Try again!`);
-//     })
-//     .finally(() => {
-//       countriesContainer.style.opacity = 1;
-//     });
-// };
+    })
+    .then(response => {
+      if (!response.ok)
+        throw new Error(`Country not found (${response.status})`);
 
+      return response.json();
+    })
+    .then(data => {
+      console.log(data[0]);
+      renderCountry(data[0], 'neighbour')})
+    .catch(err => {
+      console.error(`${err} 💥💥💥`);
+      renderError(`Something went wrong 💥💥 ${err.message}. Try again!`);
+    })
+    .finally(() => {
+      countriesContainer.style.opacity = 1;
+    });
+};
+getCountryData("portugal");
+/*
 const getCountryData = function (country) {
   // Country 1
   getJSON(
