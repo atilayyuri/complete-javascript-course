@@ -235,7 +235,7 @@ const getCountryData2 = function (country) {
 };
 
 btn.addEventListener('click', function () {
-  getCountryData('turkey');
+  getCountryData('Germany');
 });
 
 // getCountryData('australia');
@@ -289,19 +289,31 @@ const whereAmI = function (lat, lng, apiKey){
   const options = {method: 'GET', headers: {accept: 'application/json'}};
 
   fetch (`https://us1.locationiq.com/v1/reverse?key=${apiKey}&lat=${lat}&lon=${lng}&format=json&`, options).then(res => {
-  if (!res.ok) throw new Error(`Problem with geocoding ${res.status}`);
-  return res.json();
+    if (!res.ok) throw new Error(`Problem with geocoding ${res.status}`);
+    return res.json();
   }).then(data => {
-    console.log(data["address"]);
     console.log(`You are in ${data.address.city}, ${data.address.country}`);
-    renderLatLng(data);
-  }).catch(err => console.error(`${err.message} 💥`));
+    console.log(data.address.country);
+    // renderLatLng(data); 
+    getCountryData(data.address.country)
+  //   return fetch(`https://restcountries.com/v3.1/name/${data.address.country}`)
+  // }).then(res => {
+  //   if (!res.ok) throw new Error(`Country not found (${res.status})`);
+  //   return res.json();
+  // }).then(
+  //   data => {
+  //     renderCountry(data[0])
+    
+     }).catch(err => console.error(`${err.message} 💥`));
 
 }
 
 btnCoordinates.addEventListener('click', function () {
   whereAmI(52.508, 13.381, apiKey);
   whereAmI(52.508, 13.381, apiKey);
+  whereAmI(52.508, 13.381, apiKey);
+  whereAmI(52.508, 13.381, apiKey);
+  // whereAmI(52.508, 13.381, apiKey);
 })
 
 
